@@ -13,9 +13,6 @@ export const contactSlice = createSlice({
       return state.filter(contact => contact.id !== id); },
   },
 });
-
-export const getContacts = state => state.contacts;
-
 export const { addContact, deleteContact } = contactSlice.actions;
-
 export const contactsReducer = contactSlice.reducer;
+export const getContacts = state => state.contacts;
