@@ -78,8 +78,4 @@ const ContactForm = () => {
   );
 };
 
-// ContactForm.propTypes = {
-//   handleSubmit: PropTypes.func,
-// };
-
 export default ContactForm;
