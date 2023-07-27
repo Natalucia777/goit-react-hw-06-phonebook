@@ -1,15 +1,18 @@
 import { useState } from 'react';
-//import { Formik, ErrorMessage } from 'formik';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, addContact } from '../../redux/contactsSlice';
 import { StForm } from './ContactForm.styled';
 import { StLabel } from './ContactForm.styled';
 import { FieldName } from './ContactForm.styled';
 import { FieldNumber } from './ContactForm.styled';
 import { FormButton } from './ContactForm.styled';
-import PropTypes from 'prop-types';
+import shortid from 'shortid';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleChange = e => {
       const { name, value } = e.target;
@@ -26,7 +29,18 @@ const ContactForm = ({ onSubmit }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(name, number);
+    // onSubmit(name, number);
+    // setName('');
+    // setNumber('');
+    const isDuplicateName = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+    if (isDuplicateName) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+    const id = shortid.generate();
+    dispatch(addContact({ id, name, number }));
     setName('');
     setNumber('');
   };
@@ -44,7 +58,7 @@ const ContactForm = ({ onSubmit }) => {
           onChange={handleChange}
         />
       </StLabel>
-      <StLabel>
+      <StLabel htmlFor="user_tel">
         Number
         <FieldNumber
           type="tel"
@@ -64,8 +78,8 @@ const ContactForm = ({ onSubmit }) => {
   );
 };
 
-ContactForm.propTypes = {
-  handleSubmit: PropTypes.func,
-};
+// ContactForm.propTypes = {
+//   handleSubmit: PropTypes.func,
+// };
 
 export default ContactForm;

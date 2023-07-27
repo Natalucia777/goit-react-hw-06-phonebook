@@ -15,8 +15,6 @@ const ContactList = () => {
   // if (!flContacts || flContacts.length === 0) {
   //   return <div>No such contact!</div>;
   // }
-
-
   const getFlContacts = (contacts, filter) => {
     if (filter) {
       return contacts.filter(contact =>
@@ -51,8 +49,6 @@ const ContactList = () => {
     </AddList>
   );
 };
-
-
 // ContactList.propTypes = {
 //   flContacts: PropTypes.arrayOf(
 //     PropTypes.shape({
@@ -62,6 +58,4 @@ const ContactList = () => {
 //     })),
 //   onDelete: PropTypes.func.isRequired,
 // };
-
-
 export default ContactList;

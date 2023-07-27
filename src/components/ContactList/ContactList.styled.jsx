@@ -10,16 +10,16 @@ export const AddList = styled.ul`
   border-radius: 4px;
 `;
 
-export const Record = styled.li`
-  background-color: #fff;
-  border: 1px solid #000;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: space-between;
-`;
+// export const Record = styled.li`
+//   background-color: #fff;
+//   border: 1px solid #000;
+//   padding: 10px;
+//   border-radius: 4px;
+//   margin-bottom: 5px;
+//   display: flex;
+//   justify-content: space-between;
+// `;
 
-export const ContactUser = styled.p`
-  margin-right: 30px;
-`;
+// export const ContactUser = styled.p`
+//   margin-right: 30px;
+// `;

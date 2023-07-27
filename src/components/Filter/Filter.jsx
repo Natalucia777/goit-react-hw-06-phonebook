@@ -10,18 +10,13 @@ const Filter = () => {
   const changeFilter = evt => {
     return dispatch(setFilter(evt.target.value));
   };
-
   return (
-      <FilterWindow>
-        <FilterLabel>
-          Filter: Find contacts by name
-          <FilterInput
-            type="text"
-           value={filter} 
-           onChange={changeFilter}
-          />
-        </FilterLabel>
-      </FilterWindow>
+    <FilterWindow>
+      <FilterLabel>
+        Filter: Find contacts by name
+        <FilterInput type="text" value={filter} onChange={changeFilter} />
+      </FilterLabel>
+    </FilterWindow>
   );
 };
 
