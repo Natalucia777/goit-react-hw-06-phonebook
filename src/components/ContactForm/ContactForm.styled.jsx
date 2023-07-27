@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-//import { Form, Field } from 'formik';
 
 export const StForm = styled.form`
 background-color: rgb(2, 48, 85);
