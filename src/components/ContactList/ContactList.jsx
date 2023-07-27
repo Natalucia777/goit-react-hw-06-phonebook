@@ -1,13 +1,34 @@
-//import React from 'react';
-import PropTypes from 'prop-types';
+import { getFilterValue } from '../../redux/filterSlice';
+import { getContacts } from '../../redux/contactsSlice';
+import { useSelector } from 'react-redux';
 import { AddList } from './ContactList.styled';
 import { Record } from './ContactList.styled';
 import { ContactUser } from './ContactList.styled';
+import PropTypes from 'prop-types';
 
-const ContactList = ({ flContacts, onDelete }) => {
+const ContactList = () => {
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilterValue);
+  // if (!flContacts || flContacts.length === 0) {
+  //   return <div>No such contact!</div>;
+  // }
+
+  const getFlContacts = (contacts, filter) => {
+    if (filter) {
+      return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+      );
+    } else {
+      return contacts;
+    }
+  };
+
+  const flContacts = getFlContacts(contacts, filter);
+
   if (!flContacts || flContacts.length === 0) {
-    return <div>No such contact!</div>;
+    return <div>No contacts found</div>;
   }
+
   return (
     <AddList>
       {flContacts.map(contact => (
